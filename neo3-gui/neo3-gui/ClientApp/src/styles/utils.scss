@@ -1,0 +1,80 @@
+//Modify for the material-UI
+@import "./primary-ui.scss";
+
+.MuiInput-root {
+  .MuiInputBase-input {
+    display: inline-block;
+    font-size: 1rem;
+    height: 2rem;
+    line-height: 2;
+    border: 1px solid $border !important;
+    padding: $space-8 $space-5;
+    margin-top: $space-7;
+  }
+}
+
+.MuiButtonBase-root.MuiButton-root {
+  .MuiButton-label {
+    font-size: $font-5;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background-color: $btn-hover;
+    opacity: 0.85;
+    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25;
+  }
+
+  &.btn-white {
+    background: $white;
+    border: 1px solid $primary;
+    color: $primary;
+
+    .MuiButton-label {
+      font-size: $font-7;
+    }
+
+    &:hover {
+      background-color: rgb(255, 255, 255);
+      opacity: 0.7;
+    }
+  }
+}
+
+.MuiFormControl-root {
+  .MuiInputLabel-shrink {
+    @extend .font-bold;
+    .MuiFormLabel-asterisk {
+      color: $red;
+    }
+  }
+}
+
+.MuiTabs-root {
+  border-bottom: 1px solid $divide;
+
+  .MuiTabs-indicator {
+    // margin-bottom: -1px;
+  }
+}
+
+.MuiTab-root {
+  color: $dark !important;
+  min-width: auto !important;
+
+  .MuiTab-wrapper {
+    font-size: $font-3;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &.Mui-selected {
+    color: $primary !important;
+  }
+}
+
+.MuiSvgIcon-root {
+  font-size: 1em !important;
+}

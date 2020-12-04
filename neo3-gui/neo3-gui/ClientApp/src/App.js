@@ -1,53 +1,26 @@
 import React from "react";
-import Router from './router/router';
-import { ConfigProvider } from "antd";
 import { Provider } from "mobx-react";
+import { BrowserRouter } from "react-router-dom";
+// import { renderRoutes } from "react-router-config";
+import renderRoutes from "@/utils/routerConfig";
+import { routes } from "@/router/routes";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { theme } from "@/styles/site.js";
 import stores from "./store/stores";
-import Config from "./config";
-import neoNode from "./neonode";
-import neoWebSocket from "./components/WebSocket/neoWebSocket";
+import "@/styles/index.scss";
 
+// const authed = false;
+const authed = false; // 可以利用mobx修改登录状态
+const authPath = "/demo"; // 默认未登录时,返回的页面
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    console.log(window.location.href);
-    if (process.env.NODE_ENV !== "development") {
-      neoNode.switchNode();
-    }
-
-    neoWebSocket.initWebSocket();
-    neoWebSocket.registMethod("getSyncHeight", this.processGetSyncHeight);
-    neoWebSocket.registMethod("getWalletBalance", this.processGetWalletBalance);
-  }
-
-
-  componentWillUnmount = () => {
-    neoWebSocket.unregistMethod("getSyncHeight", this.processGetSyncHeight);
-    neoWebSocket.unregistMethod("getWalletBalance", this.processGetWalletBalance);
-  }
-
-  processGetSyncHeight(msg) {
-    stores.blockSyncStore.setHeight(msg.result);
-  }
-
-
-  processGetWalletBalance(msg) {
-    stores.walletStore.setAccounts(msg.result.accounts);
-    stores.walletStore.setUnclaimedGas(msg.result.unclaimedGas);
-  }
-
-  render() {
-    return (
+function App() {
+  return (
+    <MuiThemeProvider theme={theme}>
       <Provider {...stores}>
-        <ConfigProvider>
-          <Router></Router>
-        </ConfigProvider>
+        <BrowserRouter>{renderRoutes(routes, authed, authPath)}</BrowserRouter>
       </Provider>
-    );
-  }
+    </MuiThemeProvider>
+  );
 }
-
 
 export default App;
