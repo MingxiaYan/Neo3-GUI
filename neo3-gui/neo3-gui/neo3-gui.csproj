@@ -78,6 +78,11 @@
   </Target>
 
 
+
+
+  <ProjectExtensions><VisualStudio><UserProperties clientapp_4package_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+
   <!--<Target Name="DebugBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' ">
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm build" />
 
