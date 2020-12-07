@@ -4,10 +4,10 @@ import { Dividers } from "@/components/dividers";
 import { GuiGrid } from "@/components/others/grid";
 import { walletStore } from "@/store/stores";
 
-class Transfer extends React.Component {
+class AddressDetail extends React.Component {
   render() {
-    return <div>Transfer</div>;
+    return <div>AddressDetail</div>;
   }
 }
 
-export default Transfer;
+export default AddressDetail;

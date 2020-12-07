@@ -2,7 +2,7 @@
 import { observable, action } from "mobx";
 
 class WalletStore {
-  @observable authed = false;
+  @observable authed = true;
 
   @action login() {
     this.authed = true;

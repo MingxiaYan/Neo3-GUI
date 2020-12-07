@@ -2,8 +2,25 @@ import React from "react";
 import { GuiButton } from "@/components/others/button";
 import { Dividers } from "@/components/dividers";
 import { GuiGrid } from "@/components/others/grid";
+import { walletStore } from "@/store/stores";
+import renderRoutes from "@/utils/routerConfig";
+import { observer, inject } from "mobx-react";
 
+@observer
 class Wallet extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      list: [],
+    };
+  }
+  login111 = () => {
+    walletStore.login();
+    this.props.history.push("/wallet/list");
+  };
+  logout111 = () => {
+    walletStore.logout();
+  };
   render() {
     return (
       // <div className="layout-container">
@@ -48,7 +65,8 @@ class Wallet extends React.Component {
               </GuiGrid>
             </div>
 
-            <GuiButton>登录后跳转</GuiButton>
+            <GuiButton onClick={this.login111}>登录 - mobx测试</GuiButton>
+            <GuiButton onClick={this.logout111}>登出 - mobx测试</GuiButton>
 
             {/* {this.state.showElem ? (
               <div>

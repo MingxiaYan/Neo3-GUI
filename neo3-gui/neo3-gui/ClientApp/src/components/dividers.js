@@ -5,7 +5,6 @@ const useStyles = makeStyles({
   root: {
     padding: "0",
     position: "relative",
-    textAlign: "center",
     zIndex: "2",
     "&::after": {
       content: "' '",

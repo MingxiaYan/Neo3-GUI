@@ -33,7 +33,9 @@ class Demo extends React.Component {
       <div className="container">
         <Link to="/">回到首页</Link>
         <Link to="/">未登录状态</Link>
-        <Dividers>Dividers</Dividers>
+        <Dividers className="text-l">Dividers</Dividers>
+        <Dividers className="text-r">Dividers</Dividers>
+        <Dividers className="text-c">Dividers</Dividers>
         <GuiGrid container spacing={3}>
           <GuiGrid item xs={3}>
             <GuiButton>Normal</GuiButton>
