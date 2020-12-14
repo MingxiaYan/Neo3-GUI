@@ -8,12 +8,12 @@ $back-light: #f9fafa;
 $white: #fff;
 $dark: #000;
 $text-primary: rgba(0, 0, 0, 0.85);
-// $text-detail: rgba(0, 0, 0, 0.85);
 $text-light: rgba(0, 0, 0, 0.5);
 $hint-color: rgba(0, 0, 0, 0.65);
 $border: #d9d9d9;
 $border-hover: #e5681a;
 $divide: #e8e8e8aa;
+$list-hover: #e8e8e8a6;
 $red: #e5681a;
 $font-1: 40px;
 $font-2: 24px;
@@ -37,4 +37,23 @@ $width-100: 100vw;
   color: $hint-color;
   font-weight: bold;
   line-height: 1.8;
+}
+
+.scroll-bar {
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    height: 0;
+    width: 0;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 6px;
+    width: 6px;
+    height: 0;
+    width: 0;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
 }

@@ -23,16 +23,25 @@ import { InputArea, SelectArea } from "@/components/others/input";
 import { TitleLabel } from "@/components/others/label";
 import { GuiMd } from "@/components/markdown";
 
+import { GuiAvantar } from "@/components/others/avantar";
+
+import img from "@/assets/images/neo-icon.svg";
+
 @withStyles(useStyles)
 class Demo extends React.Component {
   // let history = useLocation();
   render() {
     const { routes } = this.props.route;
     console.log(routes);
+    console.log("@");
     return (
       <div className="container">
         <Link to="/">回到首页</Link>
         <Link to="/">未登录状态</Link>
+
+        <GuiAvantar src={img} size="l"></GuiAvantar>
+        <img src={img} width="100"></img>
+
         <Dividers className="text-l">Dividers</Dividers>
         <Dividers className="text-r">Dividers</Dividers>
         <Dividers className="text-c">Dividers</Dividers>

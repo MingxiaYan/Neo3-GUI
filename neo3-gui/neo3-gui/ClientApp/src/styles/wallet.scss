@@ -40,3 +40,38 @@
   font-size: $font-7;
   line-height: 1.7;
 }
+
+// .posi-sticky {
+//   position: sticky;
+//   top: 0;
+// }
+
+.wallet-list {
+  @extend .scroll-bar;
+
+  background: $white;
+  padding: 0 $space-6;
+  height: calc(100vh - 160px);
+  overflow-y: auto;
+
+  .list-head {
+    top: 0;
+    position: sticky;
+    background: $white;
+    z-index: 5;
+  }
+
+  .gui-list {
+    li {
+      overflow: hidden;
+      border-bottom: 1px solid $divide;
+      vertical-align: middle;
+    }
+  }
+}
+
+.asset-list {
+  @extend .scroll-bar;
+  height: 400px;
+  overflow-y: auto;
+}

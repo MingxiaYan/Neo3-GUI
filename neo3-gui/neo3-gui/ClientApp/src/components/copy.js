@@ -1,4 +1,5 @@
 import React from "react";
+import message from "@/components/others/message";
 
 const Copy = (props) => {
   const { msg } = props;
@@ -16,6 +17,7 @@ const Copy = (props) => {
       //   } else {
       //     alert("复制失败，请手动复制！");
       //   }
+      message.info("11111");
       document.body.removeChild(ele);
     } else {
       //   alert("没有内容");

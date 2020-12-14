@@ -5,10 +5,9 @@ import { Tabs, Tab } from "@material-ui/core";
 
 const TitleBar = (other) => {
   const props = { ...other };
-  console.log(props);
   return (
     <div className="gui-title">
-      <div {...other}></div>
+      <div className="title" {...other}></div>
     </div>
   );
 };
