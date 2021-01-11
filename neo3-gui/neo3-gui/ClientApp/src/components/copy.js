@@ -12,12 +12,11 @@ const Copy = (props) => {
       document.body.appendChild(ele);
       ele.select();
       var success = document.execCommand("copy");
-      //   if (success) {
-      //     alert("复制成功！");
-      //   } else {
-      //     alert("复制失败，请手动复制！");
-      //   }
-      message.info("11111");
+      if (success) {
+        message.success("复制成功");
+      } else {
+        message.error("复制失败，请手动复制");
+      }
       document.body.removeChild(ele);
     } else {
       //   alert("没有内容");

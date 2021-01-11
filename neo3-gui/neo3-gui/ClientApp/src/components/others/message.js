@@ -5,31 +5,37 @@
  * @returns {string} 截取的val
  */
 
-let key = 1;
+import * as React from "react";
+import Notification from "rc-notification";
+// import { InfoIcon, ErrorIcon, WarningIcon } from "@material-ui/icons";
+import CancelIcon from "@material-ui/icons/Cancel";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import ErrorIcon from "@material-ui/icons/Error";
+import InfoIcon from "@material-ui/icons/Info";
 
-const api = {
+let notification = null;
+Notification.newInstance({}, (n) => (notification = n));
+
+const msg = {
   open: notice,
-  config: setMessage,
-  onClose: closeAlert,
+  config: "setMessage",
+  onClose: "closeAlert",
 };
 
-["success", "info", "warning", "error", "loading"].forEach((type) => {
-  console.log(api);
-  console.log(type);
-  attachTypeApi(api, type);
+// 渲染msg，定义类型弹窗
+["success", "info", "warning", "error"].forEach((type) => {
+  attachTypeApi(msg, type);
 });
 
-function isArgsProps(content) {
-  console.log(content);
-  return (
-    Object.prototype.toString.call(content) === "[object Object]" &&
-    !!content.content
-  );
-}
-
+/**
+ * msg-类型绑定
+ * @param {string} open 默认绑定的open方法
+ * @param {number} duration msg显示时间，默认为3s
+ * @param {object} onClose 关闭的回调方法
+ */
 export function attachTypeApi(originalApi, type) {
-  console.log(originalApi);
   originalApi[type] = (content, duration, onClose) => {
+    //若content及content.content存在
     if (isArgsProps(content)) {
       return originalApi.open({ ...content, type });
     }
@@ -43,41 +49,42 @@ export function attachTypeApi(originalApi, type) {
   };
 }
 
+//判断该content是否为object类型及content.content 是否存在
+function isArgsProps(content) {
+  return (
+    Object.prototype.toString.call(content) === "[object Object]" &&
+    !!content.content
+  );
+}
+
+const iconType = {
+  success: <CheckCircleIcon />,
+  warning: <ErrorIcon />,
+  info: <InfoIcon />,
+  error: <CancelIcon />,
+};
+
+/**
+ * 消息提示
+ * @param {object} args content,duration,onClose,type
+ * @param {string} [url] 被截取的url
+ * @returns {string} 截取的val
+ */
 function notice(args) {
-  console.log(args);
-  const target = args.key || key++;
-  const closePromise = new Promise((resolve) => {
-    const callback = () => {
-      if (typeof args.onClose === "function") {
-        args.onClose();
-      }
-      return resolve(true);
-    };
+  const duration = args.duration !== undefined ? args.duration : 60;
+
+  notification.notice({
+    content: (
+      <div className={12}>
+        <span>{iconType[args.type]}</span>
+        <span>{args.content}</span>
+      </div>
+    ),
+    duration: duration,
+    onClose() {
+      console.log("close msg");
+    },
   });
-
-  const result = () => {};
-  result.then = (filled, rejected) => closePromise.then(filled, rejected);
-  result.promise = closePromise;
-  return result;
 }
 
-function setMessage(options) {
-  console.log(options);
-}
-
-function closeAlert() {
-  console.log(11111);
-}
-
-// message.success(content, [duration], onClose);
-// message.error(content, [duration], onClose);
-// message.info(content, [duration], onClose);
-// message.warning(content, [duration], onClose);
-// message.warn(content, [duration], onClose); // alias of warning
-// message.loading(content, [duration], onClose);
-
-// const getInstance = () => {
-//   return process.env.NODE_ENV === "test" ? messageInstance : null;
-// };
-
-export default api;
+export default msg;
