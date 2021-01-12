@@ -1,6 +1,5 @@
 import React from "react";
 import { GuiButton } from "@/components/others/button";
-import { Dividers } from "@/components/dividers";
 import { GuiGrid } from "@/components/others/grid";
 import { walletStore } from "@/store/stores";
 import { TitleBar } from "@/components/others/titleBar";

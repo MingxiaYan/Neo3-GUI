@@ -76,7 +76,7 @@ function AssetList(props) {
   );
 }
 
-function TokenList(props) {
+function TransList(props) {
   const { head, route } = props.array;
   const classes = useStyles();
 
@@ -99,4 +99,4 @@ function TokenList(props) {
   );
 }
 
-export { ListHead, AddressList, AssetList, TokenList };
+export { TransList };

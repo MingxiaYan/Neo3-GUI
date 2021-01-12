@@ -34,9 +34,36 @@ li {
 .layout-nav {
   flex: 0 0 200px;
   width: 200px;
-  min-height: 100vh;
+  height: 100vh;
   background: $white;
   color: $hint-color;
+  position: sticky;
+  top: 0;
+
+  .layout-logo {
+    width: 155px;
+    margin: $space-4 auto $space-4 auto;
+    margin: 15px 10px;
+
+    &::before {
+      content: " ";
+      display: block;
+      width: 100%;
+      min-height: 35px;
+      background: url(../assets/images/logo.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      box-shadow: none;
+    }
+  }
+
+  .layout-content {
+    @extend .scroll-bar;
+
+    height: 300px;
+    overflow-y: auto;
+  }
 
   ul {
     padding: 0;
@@ -176,6 +203,10 @@ li {
 .pa3 {
   padding-left: $space-8;
   padding-right: $space-8;
+}
+
+.p0 {
+  padding: 0 !important;
 }
 
 .clipboard {

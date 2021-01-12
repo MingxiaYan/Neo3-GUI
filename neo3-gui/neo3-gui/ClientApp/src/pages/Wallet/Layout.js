@@ -1,4 +1,5 @@
 import React from "react";
+import HomeIcon from "@material-ui/icons/Home";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import { Layout, LayoutHead, LayoutItem } from "@/components/layoutItem";
 import renderRoutes from "@/utils/routerConfig";
@@ -16,6 +17,10 @@ class WalletLayout extends React.Component {
     this.state = {
       array: [
         {
+          name: "wallet",
+          link: "/wallet/index",
+        },
+        {
           name: "账户列表",
           link: "/wallet/list",
         },
@@ -32,14 +37,6 @@ class WalletLayout extends React.Component {
           link: "/wallet/transfer",
         },
         {
-          name: "wallet",
-          link: "/wallet/index",
-        },
-        {
-          name: "Home",
-          link: "/",
-        },
-        {
           name: "Demo",
           link: "/demo",
         },
@@ -51,8 +48,6 @@ class WalletLayout extends React.Component {
   };
   componentWillUpdate(prevProps) {
     const authed = this.props.walletStore.authed;
-    // const locaChang =
-    //   this.props.location.pathname !== prevProps.location.pathname;
     if (authed) {
       console.log("请先登录再打开其他页面，谢谢");
       console.log(this.props);
@@ -67,7 +62,9 @@ class WalletLayout extends React.Component {
     return (
       <div className="layout-container">
         <div className="layout-nav">
-          <Layout>
+          <div className="layout-logo"></div>
+          <LayoutHead title="主页" to="/" icon={<HomeIcon />}></LayoutHead>
+          <Layout className="layout-content">
             <LayoutHead title="钱包" icon={<InboxIcon />}></LayoutHead>
             {array.map((item, index) => (
               <LayoutItem

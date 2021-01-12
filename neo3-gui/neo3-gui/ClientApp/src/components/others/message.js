@@ -6,12 +6,23 @@
  */
 
 import * as React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Notification from "rc-notification";
 // import { InfoIcon, ErrorIcon, WarningIcon } from "@material-ui/icons";
 import CancelIcon from "@material-ui/icons/Cancel";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import ErrorIcon from "@material-ui/icons/Error";
 import InfoIcon from "@material-ui/icons/Info";
+
+// const Dividers = (other) => {
+//   const classes = useStyles();
+//   const props = { ...other };
+//   return (
+//     <div className={props.className + " " + classes.root}>
+//       <span className={classes.text}>{props.children}</span>
+//     </div>
+//   );
+// };
 
 let notification = null;
 Notification.newInstance({}, (n) => (notification = n));
@@ -58,10 +69,10 @@ function isArgsProps(content) {
 }
 
 const iconType = {
-  success: <CheckCircleIcon />,
-  warning: <ErrorIcon />,
-  info: <InfoIcon />,
-  error: <CancelIcon />,
+  success: <CheckCircleIcon className="green" />,
+  info: <InfoIcon className="info" />,
+  warning: <ErrorIcon className="warn" />,
+  error: <CancelIcon className="red" />,
 };
 
 /**
@@ -71,12 +82,12 @@ const iconType = {
  * @returns {string} 截取的val
  */
 function notice(args) {
-  const duration = args.duration !== undefined ? args.duration : 60;
+  const duration = args.duration !== undefined ? args.duration : 0.5;
 
   notification.notice({
     content: (
-      <div className={12}>
-        <span>{iconType[args.type]}</span>
+      <div className="msg-content">
+        <span className="msg-icon">{iconType[args.type]}</span>
         <span>{args.content}</span>
       </div>
     ),

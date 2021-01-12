@@ -7,6 +7,11 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   head: {
     color: "#000",
+    padding: "6px 0",
+    position: "sticky",
+    top: "0",
+    zIndex: "1",
+    background: "#FFF",
   },
   icon: {
     verticalAlign: "middle",
@@ -27,8 +32,17 @@ function LayoutHead(props) {
   const classes = useStyles();
   return (
     <li className={classes.head}>
-      <span className={classes.icon}>{props.icon}</span>
-      {props.title}
+      {!!props.to ? (
+        <a href={props.to} className="p0">
+          <span className={classes.icon}>{props.icon}</span>
+          {props.title}
+        </a>
+      ) : (
+        <span>
+          <span className={classes.icon}>{props.icon}</span>
+          {props.title}
+        </span>
+      )}
     </li>
   );
 }
