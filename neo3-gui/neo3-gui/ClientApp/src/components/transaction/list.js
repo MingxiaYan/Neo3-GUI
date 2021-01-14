@@ -1,102 +1,44 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import { Copy } from "@/components/copy";
-import { GuiAvantar } from "@/components/others/avantar";
+import classNames from "classnames";
 
-const useStyles = makeStyles({
-  root: {},
-  list: {
-    color: "#000",
-  },
-  text: {
-    paddingLeft: "51px",
-  },
-});
-
-function ListHead(props) {
-  const { path, array } = props;
-  const classes = useStyles();
-  console.log(props);
-
-  return <div className="list-head">{props.children}</div>;
-}
-
-function AddressList(props) {
-  const { path, array } = props;
-  const classes = useStyles();
-
-  return (
-    <ul className="gui-list">
-      {array.map((item, index) => (
-        <li key={index}>
-          <div>
-            <Link
-              className="list-title"
-              to={path + "/AaxQymedATYpa7xbsyZhqMyrc25s3Y45pr"}
-            >
-              AaxQymedATYpa7xbsyZhqMyrc25s3Y45pr
-            </Link>
-            <Copy msg={"需要复制的地址"} />
-          </div>
-          <span className="list-hint">NEO 1,390</span>
-          <span className="list-hint">GAS 1,390</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function AssetList(props) {
-  const { path, array } = props;
-  const classes = useStyles();
-  console.log(props);
-
-  return (
-    <ul className="gui-list">
-      {array.map((item, index) => (
-        <li key={index}>
-          <div>
-            {/* <Link
-              className="list-title"
-              to={path + "/AaxQymedATYpa7xbsyZhqMyrc25s3Y45pr"}
-            >
-              AaxQymedATYpa7xbsyZhqMyrc25s3Y45pr
-            </Link> */}
-            <GuiAvantar
-              logo={path + "AaxQymedATYpa7xbsyZhqMyrc25s3Y45pr"}
-            ></GuiAvantar>
-            <Copy msg={"需要复制的地址"} />
-          </div>
-          <span className="list-hint">NEO 1,390</span>
-          <span className="list-hint">GAS 1,390</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
+let prefixCls = "gui-list";
 
 function TransList(props) {
-  const { head, route } = props.array;
-  const classes = useStyles();
+  const { header, dataSource, renderItem } = props;
+  let classStr = classString(props);
 
+  const items = [...dataSource].map((item, index) => {
+    return renderItem(item, index);
+  });
+
+  if (dataSource)
+    return (
+      <div className={classStr}>
+        <div className={classNames(`${prefixCls}-header`)}>{header}</div>
+        <>{items}</>
+      </div>
+    );
+}
+
+const classString = (props) => {
+  const _class = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-border`]: props.bordered,
+    },
+    props.className
+  );
+
+  return _class;
+};
+
+function TransItem(props) {
+  const { children } = props;
   return (
-    <ul className={classes.root}>
-      {head ? (
-        <li className={classes.head}>
-          <span className={classes.icon}>{head.icon}</span>
-          {head.name}
-        </li>
-      ) : null}
-      {route.map((item, index) => (
-        <li key={index}>
-          <Link className={classes.text} to={item.link}>
-            {item.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div className={classNames(`${prefixCls}-item`, props.className)}>
+      {children}
+    </div>
   );
 }
 
-export { TransList };
+export { TransList, TransItem };

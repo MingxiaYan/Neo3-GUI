@@ -104,6 +104,8 @@ li {
 .container {
   background: #ffffff;
   padding: $space-3;
+  padding-top: $space-8;
+  margin-top: $space-4;
 }
 
 .gui-detail {
@@ -286,11 +288,32 @@ li {
 }
 
 .gui-list {
-  li {
+  .gui-list-header {
+    color: $text-light;
+    padding: $space-8 $space-6;
+    overflow: hidden;
+    border-bottom: 1px solid $divide;
+    vertical-align: middle;
+  }
+
+  > li,
+  .gui-list-item {
     padding: $space-6;
     overflow: hidden;
     border-bottom: 1px solid $divide;
     vertical-align: middle;
+  }
+
+  .gui-list-item {
+    display: flex;
+
+    .item-left {
+      flex: auto;
+    }
+    .item-right {
+      text-align: right;
+      min-width: 150px;
+    }
   }
 
   .list-title {
@@ -316,7 +339,7 @@ li {
     text-overflow: ellipsis;
   }
 
-  li {
+  > li {
     &:hover {
       background: $list-hover;
       color: $dark;

@@ -4,6 +4,7 @@ const {
   addWebpackModuleRule,
   adjustStyleLoaders,
   addDecoratorsLegacy,
+  setWebpackTarget,
 } = require("customize-cra");
 const path = require("path");
 
@@ -23,5 +24,6 @@ module.exports = override(
         },
       });
     }
-  })
+  }),
+  setWebpackTarget("electron-renderer") //electron api
 );

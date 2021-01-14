@@ -1,0 +1,12 @@
+@import "./primary-ui.scss";
+
+.trans-list {
+  .trans-detail {
+    overflow: hidden;
+    color: $text-light;
+  }
+
+  .list-title {
+    font-weight: bold;
+  }
+}

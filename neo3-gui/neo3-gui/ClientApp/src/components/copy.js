@@ -1,5 +1,5 @@
 import React from "react";
-import message from "@/components/others/message";
+import message from "@/components/common/message";
 
 const Copy = (props) => {
   const { msg } = props;

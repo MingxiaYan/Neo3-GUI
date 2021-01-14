@@ -3,6 +3,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import { Layout, LayoutHead, LayoutItem } from "@/components/layoutItem";
 import renderRoutes from "@/utils/routerConfig";
+import Sync from "@/components/sync";
 import "@/styles/wallet.scss";
 import { observer, inject } from "mobx-react";
 
@@ -27,10 +28,6 @@ class WalletLayout extends React.Component {
         {
           name: "交易记录",
           link: "/wallet/transaction",
-        },
-        {
-          name: "交易记录-detail",
-          link: "/wallet/transaction/123",
         },
         {
           name: "转账",
@@ -82,6 +79,8 @@ class WalletLayout extends React.Component {
           <div className="sync">
             4,978,400 / 5,012,34 区块同步中<span>@</span>
           </div>
+
+          <Sync></Sync>
 
           {renderRoutes(routes, authed, authPath)}
         </div>

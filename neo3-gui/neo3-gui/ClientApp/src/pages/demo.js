@@ -2,7 +2,7 @@ import React from "react";
 import { renderRoutes } from "react-router-config";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import { TitleBar, TitleTabs } from "@/components/others/titleBar";
+import { TitleBar, TitleTabs } from "@/components/common/titleBar";
 import { useForm } from "react-hook-form";
 // import { SignInSide } from "@/components/login";
 import { useStyles } from "@/styles/site";
@@ -16,14 +16,14 @@ import {
 
 import { Dividers } from "@/components/dividers";
 
-import { GuiGrid } from "@/components/others/grid";
+import { GuiGrid } from "@/components/common/grid";
 
-import { GuiButton, UnableButton, GuiRadio } from "@/components/others/button";
-import { InputArea, SelectArea } from "@/components/others/input";
-import { TitleLabel } from "@/components/others/label";
+import { GuiButton, UnableButton, GuiRadio } from "@/components/common/button";
+import { InputArea, SelectArea } from "@/components/common/input";
+import { TitleLabel } from "@/components/common/label";
 import { GuiMd } from "@/components/markdown";
 
-import { GuiAvantar } from "@/components/others/avantar";
+import { GuiAvantar } from "@/components/common/avantar";
 
 import img from "@/assets/images/neo-icon.svg";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import { GuiButton } from "@/components/others/button";
-import { GuiGrid } from "@/components/others/grid";
+import { GuiButton } from "@/components/common/button";
+import { GuiGrid } from "@/components/common/grid";
 import { walletStore } from "@/store/stores";
-import { TitleBar } from "@/components/others/titleBar";
+import { TitleBar } from "@/components/common/titleBar";
 import { ListHead, AddressList, AssetList } from "@/components/wallet/list";
 
 class WalletList extends React.Component {

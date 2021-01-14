@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Copy } from "@/components/copy";
-import { GuiAvantar } from "@/components/others/avantar";
+import { GuiAvantar } from "@/components/common/avantar";
 
 const useStyles = makeStyles({
   root: {},
